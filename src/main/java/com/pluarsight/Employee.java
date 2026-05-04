@@ -7,6 +7,7 @@ public class Employee {
     private double payRate;
     private double hourWorked;
 
+
     public Employee(String employeeId, String name, String department, double payRate, double hourWorked) {
         this.employeeId = employeeId;
         this.name = name;
@@ -36,12 +37,30 @@ public class Employee {
     }
     // Dervived getters
     public double getTotalPay(){
+        return getHourWorked()* payRate + getOvertimeHours()*(payRate*1.5);
+
+
+
+
 
     }
     public double getRegularHours(){
+        if(hourWorked>= 40){
+            return 40;
+        }
+        else{
+            return hourWorked;
+        }
+
 
     }
-    public double getOvertimeHours{
+    public double getOvertimeHours() {
+        if (hourWorked> 40){
+            return hourWorked-40;
+        }
+        else {
+            return 0;
+        }
 
     }
 }
