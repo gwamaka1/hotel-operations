@@ -3,13 +3,13 @@ package com.pluarsight;
 public class Room {
     private int numberOfBeds;
     private double price;
-    private boolean occupied;
-    private boolean dirty;
+    private boolean isOccupied;
+    private boolean isDirty;
 
     public Room(int numberOfBeds, double price) {
         this.numberOfBeds = numberOfBeds;
-        this.dirty = false;
-        this.occupied = false;
+        this.isDirty = false;
+        this.isOccupied = false;
         this.price = price;
     }
 
@@ -22,14 +22,34 @@ public class Room {
     }
 
     public boolean isOccupied() {
-        return occupied;
+        return isOccupied;
     }
 
     public boolean isDirty() {
-        return dirty;
+        return isDirty;
     }
 
-    public boolean isAvailble() {
+    public boolean isAvailable() {
         return !isOccupied()&&!isDirty();
+    }
+    public void checkIn(){
+        if(isAvailable()){
+            isOccupied =true;
+          isDirty = true;
+        }
+    }
+    public void checkOut(){
+
+            isOccupied = false;
+    }
+    public void cleanRoom(){
+        if(!isOccupied){
+            isDirty = false;
+
+        }
+
+
+
+
     }
 }

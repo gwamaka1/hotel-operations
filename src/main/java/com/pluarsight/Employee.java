@@ -1,11 +1,14 @@
 package com.pluarsight;
 
+import java.util.Scanner;
+
 public class Employee {
     private String employeeId;
     private String name;
     private String department;
     private double payRate;
     private double hourWorked;
+    private int startTime;
 
 
     public Employee(String employeeId, String name, String department, double payRate, double hourWorked) {
@@ -14,6 +17,7 @@ public class Employee {
         this.department = department;
         this.payRate = payRate;
         this.hourWorked = hourWorked;
+        this.startTime = 0;
     }
 
     public String getEmployeeId() {
@@ -45,7 +49,7 @@ public class Employee {
 
     }
     public double getRegularHours(){
-        if(hourWorked>= 40){
+        if(hourWorked> 40){
             return 40;
         }
         else{
@@ -60,6 +64,17 @@ public class Employee {
         }
         else {
             return 0;
+        }
+
+    }
+    public void punchTimeCard(int time){
+        if (startTime ==0){
+            startTime = time;
+        }else{
+            int duration = startTime - time;
+            hourWorked+= duration;
+            startTime = 0;
+
         }
 
     }
